@@ -1,0 +1,19 @@
+import pyodbc as odbc
+import pandas as pd
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+
+# Database configuration
+server = os.getenv('DB_SERVER', 'localhost')  # Your SQL Server instance
+database = os.getenv('DB_NAME', 'stock_db')   # Your database name
+
+# Connect to SQL Server
+conn = odbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};'
+    f'SERVER={server};'
+    f'DATABASE={database};'
+    'Trusted_Connection=yes;'
+) 
